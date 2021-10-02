@@ -1,6 +1,7 @@
 package com.example.backend.domain;
 
 import com.example.backend.enums.ETipoCategoria;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ public class Categoria implements Serializable {
     private String nome;
     private ETipoCategoria tipoCategoria;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "categoria")
     private List<Lancamento> lancamentos = new ArrayList<>();
 
@@ -56,6 +58,14 @@ public class Categoria implements Serializable {
 
     public void setTipoCategoria(ETipoCategoria tipoCategoria) {
         this.tipoCategoria = tipoCategoria;
+    }
+
+    public List<Lancamento> getLancamentos() {
+        return lancamentos;
+    }
+
+    public void setLancamentos(List<Lancamento> lancamentos) {
+        this.lancamentos = lancamentos;
     }
 
     @Override
