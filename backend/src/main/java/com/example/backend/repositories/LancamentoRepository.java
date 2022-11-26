@@ -1,9 +1,7 @@
 package com.example.backend.repositories;
 
-import com.example.backend.domain.Lancamento;
+import com.example.backend.entity.LancamentoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface LancamentoRepository extends JpaRepository<Lancamento, Integer> {
+public interface LancamentoRepository extends JpaRepository<LancamentoEntity, Long> {
 }
