@@ -18,7 +18,7 @@ import java.util.List;
 public class CategoriaDespesaRestController {
 
     @Autowired
-    CategoriaDespesaService categoriaDespesaService;
+    private CategoriaDespesaService categoriaDespesaService;
 
     @GetMapping(value = "/categorias/despesa")
     public ResponseEntity<List<CategoriaDespesaEntity>> buscarCategorias() {
