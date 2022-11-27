@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,8 +27,8 @@ public class LancamentoRestController {
         return ResponseEntity.status(HttpStatus.OK).body(lancamentos);
     }
 
-    @PostMapping(value = "/lancamentos/incluir")
-    public ResponseEntity<LancamentoEntity> incluirLancamento(@RequestBody LancamentoEntity lancamento) {
+    @PostMapping(value = "/lancamentos/adicionar")
+    public ResponseEntity<LancamentoEntity> adicionarLancamento(@RequestBody LancamentoEntity lancamento) {
         LancamentoEntity ret = lancamentoService.adicionarLancamento(lancamento);
         return ResponseEntity.status(HttpStatus.OK).body(ret);
     }
@@ -36,5 +37,11 @@ public class LancamentoRestController {
     public ResponseEntity<HttpStatus> excluirLancamento(@RequestParam Long id){
         lancamentoService.excluirLancamento(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PutMapping(value = "lancamentos/editar")
+    public ResponseEntity<LancamentoEntity> editarLancamento(@RequestBody LancamentoEntity lancamento) {
+        LancamentoEntity ret = lancamentoService.editarLancamento(lancamento);
+        return ResponseEntity.status(HttpStatus.OK).body(ret);
     }
 }
